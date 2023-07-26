@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="static/css/home.css">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Home</title>
+</head>
+<body>
+<div>
+<img src="https://randomwordgenerator.com/img/picture-generator/chair-1840011_640.jpg">
+<h1>
+{{match['name']}}
+</h1>
+<h3>{{match['bio']}}</h3>
+</div>
+<div>
+<form method="POST" action="/home">
+<input type="radio" name="swipe" value="Yes">Yes
+<input type="radio" name="swipe" value="No">No
+<input type="submit">
+</form>
+<a href="notifications">view notifications</a>
+<a href="signout">signout</a>
+</div>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>
+{{responder}}
+	</title>
+
+</head>
+<body>
+{%for message in range(len(chat)-3%}
+{%if chat[message+3]['author']==name}
+<div class="author">
+<h3>
+{{chat[message +3]['message']}}
+</h3>
+</div>
+{%else%}
+<div class="reciver">
+<h3>
+{{chat[message +3]['message']}}
+</h3>
+</div>
+{%endif%}
+{%endfor%}
+<div>
+	<form method="POST" action="/chat">
+		<input type="text" name="response">
+		<input type="submit" >
+	</form>
+</div>
+<a href="{{url_for(view_chats)}}"> Back</a>
+</body>
+</html>

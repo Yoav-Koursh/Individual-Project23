@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Create your profile!</title>
+	 <link rel="stylesheet" type="text/css" href="static/css/profile_edit.css">
+</head>
+<body>
+</head>
+<body>
+<h1>
+ Enter your details
+</h1>
+<form action='/profile_edit' method="POST" enctype="multipart/form-data">
+<div>
+<input type="text" name="name" placeholder="Name">
+<input type="text" name="bio" placeholder="type Bio" maxlength="500">
+<input type="number" name="phone" placeholder="phone number">
+</div>
+<div>
+chose your gender-
+<input type= 'radio' name='gender' value='female'>female
+<input type="radio" name="gender" value="male"> male
+
+</div>
+<div>
+What gender are you intrested in dating?
+<input type="radio" name="attraction" value="female">woman
+<input type="radio" name="attraction" value="male">men
+</div>
+<div>
+	<input type="file" name="profile_pic" accept="image/*" required>
+</div>
+<input type="submit" value="Upload" required>
+</form>
+</body>
+</html>

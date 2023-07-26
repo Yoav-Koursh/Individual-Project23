@@ -1,0 +1,77 @@
+/* home.css */
+
+/* Apply the color palette */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #ffffff; /* White */
+  color: #000000; /* Black */
+}
+
+/* Profile container */
+div {
+  max-width: 500px; /* Limiting the maximum width of the profile container */
+  margin: 0 auto; /* Center the profile container */
+  padding: 20px;
+  text-align: center;
+  border: 2px solid #5499C7; /* Add a border with the Soft Blue color */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow */
+}
+
+/* Profile image */
+img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* Profile name */
+h1 {
+  margin-top: 15px;
+  color: #5499C7; /* Soft Blue */
+}
+
+/* Profile bio */
+h3 {
+  color: #AAAAAA; /* Gray */
+}
+
+/* Swipe form container */
+div:last-child {
+  margin-top: 30px;
+  text-align: center;
+}
+
+/* Swipe form radio buttons */
+input[type="radio"] {
+  margin-right: 5px;
+}
+
+/* Swipe form submit button */
+input[type="submit"] {
+  background-color: #98FB98; /* Mint Green */
+  color: #FFFFFF; /* White */
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Swipe form submit button on hover */
+input[type="submit"]:hover {
+  background-color: #B76E79; /* Rose Gold */
+}
+
+/* Links at the bottom */
+a {
+  display: inline-block;
+  margin-top: 10px;
+  color: #5499C7; /* Soft Blue */
+  text-decoration: none;
+  margin-right: 20px;
+}
+
+/* Links on hover */
+a:hover {
+  text-decoration: underline;
+}
