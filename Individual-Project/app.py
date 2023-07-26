@@ -52,23 +52,18 @@ def profile_edit():
         if file.filename == '':
             return "No selected file", 400
         image_data = file.read()
-        base64_encoded = base64.b64encode(image_data).decode('utf-8')
+        with open(file, "rb") as img_file:
+            img = base64.b64encode(img_file.read()) #sadly img encode/decode didnt work- maybe in future    
         name=request.form['name']
         bio=request.form['bio']
         gender=request.form['gender']
         attraction=request.form['attraction']
-        user={'name':name, 'bio':bio, 'gender' :gender,'attraction':attraction, 'picture':base64_encoded, 'matchindex':0, 'rating':1200, 'UID':UID, 'matches':[0], 'phone':phone, 'notifications':['']}
+        user={'photo':img,'name':name, 'bio':bio, 'gender' :gender,'attraction':attraction, 'picture':base64_encoded, 'matchindex':0, 'rating':1200, 'UID':UID, 'matches':[0], 'phone':phone, 'notifications':['']}
         db.child('users').child(UID).update(user)
         user=db.child('users').child(UID).get().val()
         return redirect(url_for('home'))
     return render_template('profile_edit.html')
-@app.route('/message')
-def message():
-    UID=login_session['user']['localId']
-    index=db.child('users').child(UID).child('matchindex').get().val()
-    match_UID=db.child('UID_list').child('list').get().val()[index]
-    match= db.child('users').child(match_UID).get().val()
-    return render_template('message.html', match= match)
+
 @app.route('/home', methods=['GET', 'POST'])
 def home():
     try:
@@ -164,21 +159,6 @@ def signup():
             print(f"ERROR: {e}")
     return render_template("signup.html")
 
-@app.route('/chat/<string:chatUID>', methods=['GET', 'POST'])
-def chat():
-    UID=login_session['user']['localId']
-    name= db.child('users').child('UID').child('name').get().val()
-    chat= db.child('chats').child(chatUID).get().val()
-    if request.method=='POST':
-        response= request.form('response')
-        response={'message':response, 'author':name}
-        chat.append(response)
-        db.child('chats').update({chatUID:chat})
-    if chat[0]==name:
-        responder=chat[1]
-    else:
-        responder=chat[0]
-    return render_template('view_chat.html', chat=chat, name=name, responder=responder)
 @app.route("/signout")
 def signout():
     auth.current_user=None
